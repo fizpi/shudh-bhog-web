@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>छठ पूजा प्रसाद सेवा | Chhath Puja Prasad Seva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --saffron: #FF9933;
+            --orange: #FF6B35;
+            --golden: #FFD700;
+            --sun-yellow: #FFC107;
+            --water-blue: #1E88E5;
+            --leaf-green: #4CAF50;
+            --white: #FFFFFF;
+            --dark-bg: #1a1a2e;
+            --dark-card: #16213e;
+            --dark-text: #eee;
+            --light-bg: #FFF8F3;
+            --light-text: #333;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--light-bg);
+            color: var(--light-text);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--saffron), var(--orange));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sun-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--sun-yellow);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px var(--golden);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: white;
+            color: var(--orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255, 153, 51, 0.1), rgba(255, 107, 53, 0.1)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FF9933" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,138.7C672,128,768,128,864,138.7C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            padding: 2rem 20px;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(rgba(30, 136, 229, 0.1), rgba(76, 175, 80, 0.1)),
+                var(--dark-bg);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--saffron), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .hindi {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .hero .hindi {
+            color: var(--sun-yellow);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--light-text);
+        }
+
+        body.dark-mode .hero-description {
+            color: var(--dark-text);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--saffron), var(--orange));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 20px;
+            background: white;
+            position: relative;
+            z-index: 999;
+        }
+
+        body.dark-mode .features {
+            background: var(--dark-card);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--saffron);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        body.dark-mode .feature-card {
+            background: var(--dark-bg);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--saffron), var(--orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--orange);
+        }
+
+        .feature-card .hindi-title {
+            font-size: 1.2rem;
+            color: var(--saffron);
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 20px;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.05), rgba(255, 107, 53, 0.05));
+        }
+
+        body.dark-mode .about {
+            background: var(--dark-bg);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        body.dark-mode .about-card {
+            background: var(--dark-card);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 4rem 20px;
+            background: white;
+        }
+
+        body.dark-mode .process {
+            background: var(--dark-card);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--saffron), var(--orange));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Testimonial Section */
+        .testimonials {
+            padding: 4rem 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.1));
+        }
+
+        body.dark-mode .testimonials {
+            background: var(--dark-bg);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        body.dark-mode .testimonial-card {
+            background: var(--dark-card);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .customer-name {
+            color: var(--orange);
+            font-weight: bold;
+        }
+
+        /* Special Offer Banner */
+        .offer-banner {
+            background: linear-gradient(135deg, var(--golden), var(--sun-yellow));
+            color: var(--dark-bg);
+            padding: 3rem 20px;
+            text-align: center;
+        }
+
+        .offer-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .time-unit {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        .time-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--orange);
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--saffron), var(--orange));
+            color: white;
+            padding: 3rem 20px 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--orange);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timer {
+                gap: 1rem;
+            }
+
+            .time-unit {
+                min-width: 60px;
+                padding: 0.5rem;
+            }
+
+            .time-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Decorative Elements */
+        .mandala {
+            position: absolute;
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+        }
+
+        .mandala-1 {
+            top: 10%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+        }
+
+        .mandala-2 {
+            bottom: 10%;
+            right: -5%;
+            width: 250px;
+            height: 250px;
+        }
+
+        /* Floating Animation */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="sun-icon"></span>
+                <span>छठ पूजा प्रसाद सेवा</span>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hindi">॥ छठी मैया की जय ॥</h1>
+            <h1>Chhath Puja Prasad Delivery Service</h1>
+            <p class="hero-description">
+                <strong>घर से दूर हैं? चिंता न करें!</strong><br>
+                Away from home? Don't worry!<br>
+                Get authentic Chhath Puja prasad delivered to your doorstep anywhere in the world
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                🌅 सूर्य देव और छठी मैया का आशीर्वाद, अब आपके द्वार 🏠<br>
+                Sun God's blessings delivered with love and devotion
+            </p>
+            <a href="form.html" class="cta-button float">
+                📦 Book Your Prasad Now | प्रसाद बुक करें
+            </a>
+        </div>
+        <svg class="mandala mandala-1" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="100" cy="100" r="50" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <svg class="mandala mandala-2" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="100" cy="100" r="50" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Service?</h2>
+            <p class="section-subtitle">हमारी सेवा की विशेषताएं</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🙏</div>
+                    <h3>Authentic Prasad</h3>
+                    <p class="hindi-title">शुद्ध एवं पारंपरिक प्रसाद</p>
+                    <p>Prepared with complete devotion following all traditional rituals. Includes Thekua, fruits,
+                        sugarcane, and all puja essentials.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Worldwide Delivery</h3>
+                    <p class="hindi-title">विश्वभर में डिलीवरी</p>
+                    <p>Speed Post ensures your prasad reaches you anywhere in the world - from Bangalore to Boston,
+                        Dubai to Dublin!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Hygienic Packaging</h3>
+                    <p class="hindi-title">स्वच्छ एवं सुरक्षित पैकेजिंग</p>
+                    <p>Special eco-friendly packaging that keeps prasad fresh and maintains its sanctity during transit.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🕉️</div>
+                    <h3>Blessed by Priests</h3>
+                    <p class="hindi-title">पंडितों द्वारा आशीर्वादित</p>
+                    <p>Each prasad is blessed by experienced priests performing proper Chhath Puja vidhi at holy ghats.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💝</div>
+                    <h3>Gift Your Loved Ones</h3>
+                    <p class="hindi-title">अपनों को भेजें आशीर्वाद</p>
+                    <p>Send prasad to family and friends who can't make it home. Share the divine blessings!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Track Your Order</h3>
+                    <p class="hindi-title">ऑर्डर ट्रैकिंग सुविधा</p>
+                    <p>Real-time tracking of your prasad delivery with SMS and email updates at every step.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <h2 class="section-title">About Chhath Puja</h2>
+            <p class="section-subtitle">छठ पूजा के बारे में</p>
+            <div class="about-card">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    <strong>छठ पूजा</strong> बिहार, झारखंड और पूर्वी उत्तर प्रदेश का सबसे पवित्र त्योहार है। यह पर्व
+                    सूर्य देव और उनकी पत्नी उषा (छठी मैया) को समर्पित है।<br><br>
+
+                    Chhath Puja is an ancient Hindu festival dedicated to the Sun God (Surya Dev) and his consort.
+                    Devotees observe a rigorous 4-day fast, offering prayers at sunrise and sunset while standing in
+                    water.<br><br>
+
+                    <strong>The Problem We Solve:</strong><br>
+                    लाखों लोग नौकरी और व्यवसाय के कारण अपने घर से दूर रहते हैं। छठ पूजा के समय घर जाना हमेशा संभव नहीं
+                    होता।<br><br>
+
+                    Millions of people living in metros and abroad miss the spiritual connection of Chhath Puja. We
+                    bridge this gap by delivering authentic prasad prepared with the same devotion and rituals as your
+                    mother would at home.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">कैसे काम करता है</p>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Book Online</h3>
+                    <p class="hindi-title">ऑनलाइन बुक करें</p>
+                    <p>Fill a simple form with delivery details</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Puja Performance</h3>
+                    <p class="hindi-title">पूजा संपन्न</p>
+                    <p>Prasad prepared & blessed during actual Chhath Puja</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Safe Packaging</h3>
+                    <p class="hindi-title">सुरक्षित पैकिंग</p>
+                    <p>Hygienic packing maintaining sanctity</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Speed Post Delivery</h3>
+                    <p class="hindi-title">तीव्र डिलीवरी</p>
+                    <p>Delivered to your doorstep via Speed Post</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Banner -->
+    <section class="offer-banner">
+        <div class="container">
+            <p class="offer-text">🎊 Early Bird Offer - Book before Nahay Khay! 🎊</p>
+            <p style="font-size: 1.2rem;">प्रारंभिक बुकिंग पर विशेष छूट | Special discount on advance booking</p>
+            <div class="timer">
+                <div class="time-unit">
+                    <div class="time-value" id="days">15</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">08</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">45</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">30</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">ग्राहकों की राय</p>
+
+            <div class="testimonial-card">
+                <p class="quote">"Living in Mumbai, I couldn't go home for Chhath. This service brought tears to my eyes
+                    - the prasad was exactly like maa makes. छठी मैया का आशीर्वाद मिल गया! 🙏"</p>
+                <p class="customer-name">- Priya Singh, Mumbai</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"I'm in California and was missing home terribly during Chhath. The prasad arrived
+                    perfectly packed with all traditional items. It felt like a piece of Bihar came to my doorstep!"</p>
+                <p class="customer-name">- Rahul Kumar, USA</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"बहुत ही अच्छी सेवा! दुबई में रहते हुए भी छठ पूजा का प्रसाद मिला। पैकेजिंग बहुत अच्छी
+                    थी और सब कुछ ताज़ा था।"</p>
+                <p class="customer-name">- Anita Verma, Dubai</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="hero" style="min-height: auto; padding: 4rem 20px;">
+        <div class="hero-content">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                Don't Miss This Chhath Puja!<br>
+                <span style="color: var(--orange);">इस छठ को न रहें प्रसाद से वंचित</span>
+            </h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Limited slots available | सीमित स्लॉट उपलब्ध<br>
+                Book now and receive divine blessings at your doorstep
+            </p>
+            <a href="form.html" class="cta-button">
+                🌅 Book Prasad Now | अभी बुक करें 🙏
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>छठ पूजा प्रसाद सेवा</h3>
+                <p>Connecting devotees worldwide with the divine blessings of Chhath Puja</p>
+                <p style="margin-top: 1rem;">📧 contact@chhathprasad.com | 📞 +91-XXXXXXXXXX</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us | हमें फॉलो करें</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                    © 2024 Chhath Puja Prasad Seva. All rights reserved.<br>
+                    Made with 🧡 and devotion | श्रद्धा और भक्ति के साथ निर्मित
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.querySelector('.theme-toggle');
+
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Set target date (example: 15 days from now)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 15);
+
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scroll animation for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and testimonial cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card, .testimonial-card, .about-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Add floating animation to sun icon
+        const sunIcon = document.querySelector('.sun-icon');
+        if (sunIcon) {
+            sunIcon.style.animation = 'rotate 10s linear infinite, float 3s ease-in-out infinite';
+        }
+
+        // Add sparkle effect on CTA button hover
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.05)';
+            });
+            button.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Festival greeting popup (optional - shows once per session)
+        if (!sessionStorage.getItem('greetingShown')) {
+            setTimeout(() => {
+                const greeting = document.createElement('div');
+                greeting.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #FF9933, #FF6B35);
+                    color: white;
+                    padding: 2rem;
+                    border-radius: 20px;
+                    z-index: 10000;
+                    text-align: center;
+                    animation: fadeInUp 0.5s ease;
+                    max-width: 90%;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                `;
+                greeting.innerHTML = `
+                    <h2 style="margin: 0 0 1rem 0;">🙏 छठ पूजा की शुभकामनाएं 🙏</h2>
+                    <p style="margin: 0 0 1rem 0;">Welcome to Chhath Puja Prasad Seva</p>
+                    <button onclick="this.parentElement.remove()" style="
+                        background: white;
+                        color: #FF6B35;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        font-weight: bold;
+                    ">जय छठी मैया ✨</button>
+                `;
+                document.body.appendChild(greeting);
+                sessionStorage.setItem('greetingShown', 'true');
+
+                setTimeout(() => {
+                    if (greeting.parentElement) {
+                        greeting.remove();
+                    }
+                }, 5000);
+            }, 2000);
+        }
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.cta-button, .theme-toggle').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.5);
+                    top: ${y}px;
+                    left: ${x}px;
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
