@@ -13,8 +13,3 @@ RewriteRule ^([^/]+)/?$ $1.html [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ - [L]
-
-# If not found, redirect to custom page
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ /pagenotfound.html [QSA,L]
