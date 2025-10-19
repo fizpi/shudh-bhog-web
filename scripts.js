@@ -1,6 +1,7 @@
 const bookingDetailsForm = document.getElementById('bookingDetailsForm');
 const bookingAddressForm = document.getElementById('bookingAddressForm');
 const stepsParent = document.getElementById('from-progress');
+const paymentContainer = document.getElementById('payment-container');
 function moveNextToAddress() {
     bookingAddressForm.style.display = 'block';
     bookingDetailsForm.style.display = 'none';
@@ -144,6 +145,9 @@ document.getElementById('bookingAddressForm').addEventListener('submit', functio
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            if(data.status === "success"){
+                proceedToPayment(data);
+            }
             // window.location.href = 'payment.html';
         })
         .catch(error => {
@@ -157,3 +161,83 @@ document.getElementById('bookingAddressForm').addEventListener('submit', functio
         }
     }
 });
+
+function proceedToPayment(data){
+    const orderData = data.data
+    //  {
+    //     order_id: "3",
+    //     full_name: "Priya Sharma",
+    //     email: "priya.sharma@example.com",
+    //     phone: "9123456789",
+    //     package_type: "Premium",
+    //     package_price: "1299",
+    //     upiid: "8100546430@okbizaxis"
+    // };
+
+    bookingAddressForm.style.display = 'none';
+    bookingDetailsForm.style.display = 'none';
+    paymentContainer.style.display = 'block';
+
+    const stepChildren = stepsParent.querySelectorAll('.step');
+    stepChildren[1].classList.add('active');
+
+    // Update UI with order data
+    document.getElementById('orderId').textContent = orderData.order_id;
+    document.getElementById('customerName').textContent = orderData.full_name;
+    document.getElementById('customerEmail').textContent = orderData.email;
+    document.getElementById('customerPhone').textContent = orderData.phone;
+    document.getElementById('packageType').textContent = orderData.package_type;
+    document.getElementById('totalAmount').textContent = '₹' + orderData.package_price;
+    document.getElementById('payAmount').textContent = orderData.package_price;
+    document.getElementById('upiId').textContent = data.upiid;
+
+    // Start countdown timer
+    startTimer(15 * 60); // 15 minutes in seconds
+}
+
+ function startTimer(duration) {
+    let timer = duration;
+    const display = document.getElementById('timer');
+    
+    const interval = setInterval(() => {
+        const minutes = Math.floor(timer / 60);
+        const seconds = timer % 60;
+        
+        display.textContent = 
+            (minutes < 10 ? '0' : '') + minutes + ':' + 
+            (seconds < 10 ? '0' : '') + seconds;
+        
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = 'Time Expired!';
+            display.style.color = 'var(--error)';
+            alert('Payment time expired. Please create a new order.');
+            window.location.href = 'form';
+        }
+    }, 1000);
+}
+
+// Verify Payment
+function verifyPayment() {
+    const transactionId = document.getElementById('transactionId').value.trim();
+    
+    if (!transactionId) {
+        alert('Please enter Transaction ID');
+        return;
+    }
+
+    if (transactionId.length < 12) {
+        alert('Please enter a valid Transaction ID (minimum 12 characters)');
+        return;
+    }
+
+    // In real application, send verification request to server
+    // For now, simulate success
+    const isSuccess = Math.random() > 0.3; // 70% success rate for demo
+    
+    if (isSuccess) {
+        window.location.href = 'success?order_id=3&transaction_id=' + transactionId;
+    } else {
+        window.location.href = 'failure?order_id=3';
+    }
+}

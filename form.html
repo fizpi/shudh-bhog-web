@@ -235,6 +235,98 @@
                     </button>
                 </div>
             </form>
+
+            <div class="payment-container" id="payment-container">
+                <div class="payment-grid">
+                    
+                    <!-- QR Code Section -->
+                    <div class="payment-card qr-section">
+                        <h2 class="card-title">💳 Scan & Pay</h2>
+                        
+                        <div class="qr-box">
+                            <!-- Replace this div with your actual QR image -->
+                            <div class="qr-placeholder" id="qrPlaceholder">📱</div>
+                            <!-- Uncomment and update src when you have the QR image -->
+                            <!-- <img src="qr-code.jpg" alt="UPI QR Code" class="qr-image" id="qrImage"> -->
+                        </div>
+
+                        <div class="upi-id" id="upiId">
+                            8100546430@okbizaxis
+                        </div>
+
+                        <div class="payment-steps">
+                            <div class="payment-step">
+                                <div class="step-number">1</div>
+                                <div>Open any UPI app (GPay, PhonePe, Paytm, etc.)</div>
+                            </div>
+                            <div class="payment-step">
+                                <div class="step-number">2</div>
+                                <div>Scan the QR code or pay to UPI ID above</div>
+                            </div>
+                            <div class="payment-step">
+                                <div class="step-number">3</div>
+                                <div>Enter amount ₹<span id="payAmount">1299</span></div>
+                            </div>
+                            <div class="payment-step">
+                                <div class="step-number">4</div>
+                                <div>Complete payment & note Transaction ID</div>
+                            </div>
+                            <div class="payment-step">
+                                <div class="step-number">5</div>
+                                <div>Enter Transaction ID and verify</div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Order Summary -->
+                    <div class="payment-card">
+                        <h2 class="card-title">📋 Order Summary</h2>
+                        
+                        <div class="order-summary">
+                            <div class="summary-row">
+                                <span class="summary-label">Order ID:</span>
+                                <span class="summary-value" id="orderId">3</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Name:</span>
+                                <span class="summary-value" id="customerName">Priya Sharma</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Email:</span>
+                                <span class="summary-value" id="customerEmail">priya.sharma@example.com</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Phone:</span>
+                                <span class="summary-value" id="customerPhone">9123456789</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Package:</span>
+                                <span class="summary-value" id="packageType">Premium</span>
+                            </div>
+                        </div>
+
+                        <div class="total-row">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">₹1299</span>
+                        </div>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Important:</strong> Please complete payment within 15 minutes. After payment, enter your transaction ID below.
+                        </div>
+
+                        <div class="timer" id="timer">15:00</div>
+
+                        <div class="transaction-input">
+                            <label>Transaction ID / UTR Number <span style="color: var(--error)">*</span></label>
+                            <input type="text" id="transactionId" placeholder="Enter 12-digit transaction ID" required>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="verifyPayment()">
+                            Verify Payment ✓
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

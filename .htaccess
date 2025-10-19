@@ -1,16 +1,20 @@
-# Enable rewrite engine
+# Enable the rewrite engine
 RewriteEngine On
 
-# Serve .html files without extension
+# Preserve query strings
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Serve .html files without extension (preserve query string)
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
+RewriteRule ^([^/]+)/?$ $1.html [QSA,L]
 
-# Don’t rewrite for static assets
+# Skip rewrites for assets
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico)$ - [L]
+RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot)$ - [L]
 
-# Redirect all other requests to pagenotfound.html
+# If not found, redirect to custom page
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ /pagenotfound.html [L]
+RewriteRule ^.*$ /pagenotfound.html [QSA,L]
