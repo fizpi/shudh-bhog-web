@@ -1,0 +1,16 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Serve .html files without extension
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Don’t rewrite for static assets
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico)$ - [L]
+
+# Redirect all other requests to pagenotfound.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /pagenotfound.html [L]
