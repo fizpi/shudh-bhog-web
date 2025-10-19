@@ -246,15 +246,21 @@
             </div>
 
             <div class="testimonial-card">
-                <p class="quote">"I'm in California and was missing home terribly during Chhath. The prasad arrived
-                    perfectly packed with all traditional items. It felt like a piece of Bihar came to my doorstep!"</p>
-                <p class="customer-name">- Rahul Kumar, USA</p>
+                <p class="quote">"I ordered from Bangalore for my parents in Patna — the delivery was on time, beautifully packed, and the prasad smelled just like home. Thank you for keeping traditions alive!"</p>
+                <p class="customer-name">- Neha Raj, Bangalore</p>
             </div>
 
             <div class="testimonial-card">
-                <p class="quote">"बहुत ही अच्छी सेवा! दुबई में रहते हुए भी छठ पूजा का प्रसाद मिला। पैकेजिंग बहुत अच्छी
-                    थी और सब कुछ ताज़ा था।"</p>
-                <p class="customer-name">- Anita Verma, Dubai</p>
+                <p class="quote">"दिल्ली में रहते हुए भी ऐसा लगा जैसे गाँव में छठ घाट पर माँ के साथ पूजा कर रही हूँ। दिल से धन्यवाद!"</p>
+                <p class="customer-name">- Kavita Mishra, Delhi</p>
+            </div>
+             <div class="testimonial-card">
+                <p class="quote">"Kolkata में छठ का माहौल उतना नहीं मिलता, लेकिन इस सेवा ने पूरा त्योहार घर तक पहुँचा दिया। दिल से धन्यवाद!"</p>
+                <p class="customer-name">- Ritesh Pandey, Kolkata</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Chennai में रहते हुए भी मैंने अपने गाँव की छठ पूजा को मिस नहीं किया। इतना प्यारा और शुद्ध प्रसाद देखकर आँखें भर आईं।"</p>
+                <p class="customer-name">- Pooja Kumari, Chennai</p>
             </div>
         </div>
     </section>
@@ -332,11 +338,8 @@
 
         // Countdown Timer
         function updateCountdown() {
-            // Set target date (example: 15 days from now)
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 15);
-
-            const now = new Date().getTime();
+            const targetDate = new Date('2025-10-28');
+            const now = new Date();
             const distance = targetDate - now;
 
             if (distance > 0) {
