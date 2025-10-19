@@ -135,7 +135,7 @@ document.getElementById('bookingAddressForm').addEventListener('submit', functio
             "special_instructions": data.instructions
         };
         const body = JSON.stringify(finalData);
-        console.log(body);
+        // console.log(body);
         fetch('https://www.smartpaybill.com/chhatpujaAPI/create_order.php', {
             method: 'POST',
             headers: {
@@ -145,7 +145,7 @@ document.getElementById('bookingAddressForm').addEventListener('submit', functio
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.success===true){
                 proceedToPayment(data);
             }
@@ -207,7 +207,7 @@ function makeQR(data){
     // const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
     let upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&tn=${note}&cu=INR&am=${amount}`;
             
-    console.log(upiUrl)
+    // console.log(upiUrl)
     const qrcodeDiv = document.getElementById('qrPlaceholder');
     qrcodeDiv.innerHTML = '';
     
@@ -274,7 +274,7 @@ function verifyPayment() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         if(data.success===true){
             paymentSuccess.style.display = 'flex';
             paymentContainer.style.display = 'none';

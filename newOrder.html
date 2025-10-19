@@ -345,6 +345,26 @@
     <script src="./scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert("Right-click is disabled on this page!");
+        });
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === "F12") e.preventDefault();
+
+            // Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') e.preventDefault();
+
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') e.preventDefault();
+
+            // Ctrl+Shift+C (Element Selector)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') e.preventDefault();
+
+            // Ctrl+U (View Page Source)
+            if (e.ctrlKey && e.key.toLowerCase() === 'u') e.preventDefault();
+        });
         // Package Selection
         function selectPackage(card, value) {
             // Remove selected class from all cards
