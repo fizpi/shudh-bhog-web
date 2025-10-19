@@ -51,8 +51,8 @@
     <!-- Form Container -->
     <div class="form-container">
         <div class="form-card">
-            <h2 class="form-title">Book Your Prasad</h2>
-            <p class="form-subtitle">प्रसाद बुकिंग फॉर्म | Delivery Details</p>
+            <h2 class="form-title" id="formTitle">Book Your Prasad</h2>
+            <p class="form-subtitle" id="formSubtitle">प्रसाद बुकिंग फॉर्म | Delivery Details</p>
 
             <form id="bookingDetailsForm" method="post">
                 <!-- Package Selection -->
@@ -327,12 +327,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="payment-success" id="paymentSuccess">
+                <h2>✅We are Reviewing Your Order</h2>
+                <p>Your order is under review. We'll get back to you soon!</p>
+                    <br>
+                <button class="btn btn-primary" onclick="window.location.href='./'">
+                    Back to Home
+                </button>
+            </div>
+            
         </div>
     </div>
 
     <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <script src="./scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         // Package Selection
         function selectPackage(card, value) {

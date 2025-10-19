@@ -2,6 +2,7 @@ const bookingDetailsForm = document.getElementById('bookingDetailsForm');
 const bookingAddressForm = document.getElementById('bookingAddressForm');
 const stepsParent = document.getElementById('from-progress');
 const paymentContainer = document.getElementById('payment-container');
+const paymentSuccess = document.getElementById('paymentSuccess');
 function moveNextToAddress() {
     bookingAddressForm.style.display = 'block';
     bookingDetailsForm.style.display = 'none';
@@ -145,7 +146,7 @@ document.getElementById('bookingAddressForm').addEventListener('submit', functio
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if(data.status === "success"){
+            if(data.success===true){
                 proceedToPayment(data);
             }
             // window.location.href = 'payment.html';
@@ -179,7 +180,7 @@ function proceedToPayment(data){
     paymentContainer.style.display = 'block';
 
     const stepChildren = stepsParent.querySelectorAll('.step');
-    stepChildren[1].classList.add('active');
+    stepChildren[2].classList.add('active');
 
     // Update UI with order data
     document.getElementById('orderId').textContent = orderData.order_id;
@@ -190,9 +191,35 @@ function proceedToPayment(data){
     document.getElementById('totalAmount').textContent = '₹' + orderData.package_price;
     document.getElementById('payAmount').textContent = orderData.package_price;
     document.getElementById('upiId').textContent = data.upiid;
-
+    orderId = orderData.order_id;
+    makeQR(data);
     // Start countdown timer
-    startTimer(15 * 60); // 15 minutes in seconds
+    startTimer(20 * 60); // 15 minutes in seconds
+}
+let orderId =null;
+function makeQR(data){
+    const upiId = data.upiid;
+    const amount = data.data.package_price;
+    const name = data.data.full_name; // optional
+    const note = "txn"+data.data.phone+data.data.order_id; // optional
+
+    // UPI Payment URL format
+    // const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
+    let upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&tn=${note}&cu=INR&am=${amount}`;
+            
+    console.log(upiUrl)
+    const qrcodeDiv = document.getElementById('qrPlaceholder');
+    qrcodeDiv.innerHTML = '';
+    
+    // Generate new QR code
+    qrcode = new QRCode(qrcodeDiv, {
+        text: upiUrl,
+        width: 256,
+        height: 256,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
 }
 
  function startTimer(duration) {
@@ -225,19 +252,50 @@ function verifyPayment() {
         alert('Please enter Transaction ID');
         return;
     }
-
-    if (transactionId.length < 12) {
-        alert('Please enter a valid Transaction ID (minimum 12 characters)');
-        return;
+    if (orderId==null) {
+         alert('Please create an order first');
+         return;
     }
 
-    // In real application, send verification request to server
-    // For now, simulate success
-    const isSuccess = Math.random() > 0.3; // 70% success rate for demo
-    
-    if (isSuccess) {
-        window.location.href = 'success?order_id=3&transaction_id=' + transactionId;
-    } else {
-        window.location.href = 'failure?order_id=3';
-    }
+   const body =  {
+        "action": "update_payment",
+        "order_id": orderId,
+        "payment_status": "Completed",
+        "payment_method": "UPI",
+        "transaction_id": transactionId
+    };
+
+    fetch('https://www.smartpaybill.com/chhatpujaAPI/create_order.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if(data.success===true){
+            paymentSuccess.style.display = 'flex';
+            paymentContainer.style.display = 'none';
+            const stepChildren = stepsParent.querySelectorAll('.step');
+            stepChildren[3].classList.add('active');
+            document.getElementById('formTitle').style.display = 'none';
+            document.getElementById('formSubtitle').style.display = 'none';
+            paymentSuccess.innerHTML = `
+            <h2 style="font-size: 50px;">✅</h2>
+            <h2>We are Reviewing Your Order</h2>
+                <p>Your order (Order ID - #`+ orderId +`) is under review. We'll get back to you soon!</p>
+                    <br>
+                <button class="btn btn-primary" onclick="window.location.href='./'">
+                    Back to Home
+                </button>
+            `;
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    })
 }

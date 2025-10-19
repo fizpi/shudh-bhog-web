@@ -90,7 +90,7 @@ body.dark-mode .progress-container {
 }
 
 .progress-wrapper {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -498,13 +498,14 @@ body.dark-mode .btn-secondary:hover {
 .payment-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .payment-card {
     background: white;
     border-radius: 20px;
     padding: 1.5rem;
+    flex: 1;
     box-shadow: 0 10px 30px var(--shadow);
 }
 
@@ -667,6 +668,28 @@ body.dark-mode .transaction-input input {
 }
 
 #bookingAddressForm,
+#paymentSuccess,
 .payment-container{
     display: none;
+}
+
+@media screen and (max-width:1024px) {
+    .payment-grid {
+        flex-direction: column;
+        display: flex;
+    }
+    .qr-box{
+        padding: 1.5rem;
+    }
+    .qr-placeholder{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.payment-success{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
 }
