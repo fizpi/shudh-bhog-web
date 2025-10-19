@@ -735,7 +735,7 @@ body.dark-mode .transaction-input input {
     align-items: center;
     gap: 8px;
     font-size: 0.95rem;
-    color: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    color: var(--saffron);
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 8px;
