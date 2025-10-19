@@ -5,7 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>छठ पूजा प्रसाद सेवा | Chhath Puja Prasad Seva</title>
-  <link rel="stylesheet" href="./homestyles.css">
+
+    <meta property="og:title" content="छठ पूजा प्रसाद सेवा">
+    <meta property="og:site_name" content="छठ पूजा प्रसाद सेवा">
+    <meta property="og:url" content="https://shudhbhog.com/" />
+    <meta property="og:description" content="छठ पूजा प्रसाद सेवा | Chhath Puja Prasad Seva">
+    <meta property="og:type" content="">
+    <meta property="og:image" content="/assets/apple-icon-60x60.png">
+    <meta name="twitter:card" content="छठ पूजा प्रसाद सेवा | Chhath Puja Prasad Seva" />
+    <meta name="twitter:site" content="Shudh Bhog" />
+    <meta name="twitter:creator" content="Shudh Bhog" />
+
+    <link rel="stylesheet" href="./homestyles.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/assets/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/manifest.json">
+    <meta name="msapplication-TileColor" content="#FF9933">
+    <meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
+    <meta name="theme-color" content="#FF9933">
+
+
 </head>
 
 <body>
@@ -25,6 +56,12 @@
         <div class="hero-content">
             <h1 class="hindi">॥ छठी मैया की जय ॥</h1>
             <h1>Chhath Puja Prasad Delivery Service</h1>
+            <div>
+                <a href="https://www.smartpaybill.com/" target="_blank" class="powered-by">
+                    <img class="logo-icon" src="https://www.smartpaybill.com/images/fablogo.png">
+                    <span>Powered by <strong>SmartPayBill</strong></span>
+                </a>
+            </div>
             <p class="hero-description">
                 <strong>घर से दूर हैं? चिंता न करें!</strong><br>
                 Away from home? Don't worry!<br>
@@ -420,10 +457,12 @@
 
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            if (window.innerWidth > 740) {
+                    const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
             }
         });
 

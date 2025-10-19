@@ -57,12 +57,48 @@ body.dark-mode {
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
+.sun-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--sun-yellow);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 20px var(--golden);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+ .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
 .back-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -692,4 +728,47 @@ body.dark-mode .transaction-input input {
     align-self: center;
     flex-direction: column;
     align-items: center;
+}
+
+.powered-by {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid var(--saffron);
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.powered-by:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 255, 0.1);
+}
+
+.powered-by .logo-icon {
+    width: 20px;
+    height: 20px;
+    background: var(linear-gradient(135deg, #0000FF 0%, #A855F7 70%, #00A8D4 100%));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.timer {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--error);
+    font-weight: bold;
+    margin: 1rem 0;
 }

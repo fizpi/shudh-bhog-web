@@ -13,7 +13,7 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <span>🌅</span>
+                <span class="sun-icon"></span>
                 <span>छठ पूजा प्रसाद सेवा</span>
             </div>
             <a href="./" class="back-btn">← Back</a>
@@ -239,10 +239,16 @@
             <div class="payment-container" id="payment-container">
                 <div class="payment-grid">
                     
+                    
                     <!-- QR Code Section -->
                     <div class="payment-card qr-section">
                         <h2 class="card-title">💳 Scan & Pay</h2>
-                        
+                        <div>
+                            <a href="https://www.smartpaybill.com/" target="_blank" class="powered-by">
+                                <img class="logo-icon" src="https://www.smartpaybill.com/images/fablogo.png">
+                                <span>Powered by <strong>SmartPayBill</strong></span>
+                            </a>
+                        </div>
                         <div class="qr-box">
                             <!-- Replace this div with your actual QR image -->
                             <div class="qr-placeholder" id="qrPlaceholder">📱</div>
@@ -311,10 +317,10 @@
                         </div>
 
                         <div class="warning-box">
-                            ⚠️ <strong>Important:</strong> Please complete payment within 15 minutes. After payment, enter your transaction ID below.
+                            ⚠️ <strong>Important:</strong> Please complete payment within 20 minutes. After payment, enter your transaction ID below.
                         </div>
 
-                        <div class="timer" id="timer">15:00</div>
+                        <div class="timer powered-by" id="timer">15:00</div>
 
                         <div class="transaction-input">
                             <label>Transaction ID / UTR Number <span style="color: var(--error)">*</span></label>
@@ -365,6 +371,11 @@
             // Ctrl+U (View Page Source)
             if (e.ctrlKey && e.key.toLowerCase() === 'u') e.preventDefault();
         });
+
+        const sunIcon = document.querySelector('.sun-icon');
+        if (sunIcon) {
+            sunIcon.style.animation = 'rotate 10s linear infinite, float 3s ease-in-out infinite';
+        }
         // Package Selection
         function selectPackage(card, value) {
             // Remove selected class from all cards

@@ -9,6 +9,11 @@ function moveNextToAddress() {
 
     const stepChildren = stepsParent.querySelectorAll('.step');
     stepChildren[1].classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 let finalData = {};
   // Form Validation
@@ -193,6 +198,11 @@ function proceedToPayment(data){
     document.getElementById('upiId').textContent = data.upiid;
     orderId = orderData.order_id;
     makeQR(data);
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
     // Start countdown timer
     startTimer(20 * 60); // 15 minutes in seconds
 }
@@ -291,6 +301,11 @@ function verifyPayment() {
                     Back to Home
                 </button>
             `;
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         } else {
             alert(data.message);
         }
