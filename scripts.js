@@ -314,3 +314,57 @@ function verifyPayment() {
         console.error('Error:', error);
     })
 }
+
+function checkOrderDetails() {
+    const orderNo = document.getElementById('orderNo').value.trim();
+    const phoneNumber = document.getElementById('phoneNumber').value.trim();
+    
+    if (!orderNo) {
+        alert('Please enter Order Number');
+        return;
+    }
+    if (!phoneNumber) {
+         alert('Please enter Phone Number');
+         return;
+    }
+    if(phoneNumber.length<10){
+        alert('Please enter valid Phone Number');
+        return;
+    }
+
+   const body =  {
+        "order_id": orderNo,
+        "phone_number": phoneNumber
+    };
+
+    fetch('https://www.smartpaybill.com/chhatpujaAPI/get_order_details.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data);
+        if(data.success===true){
+            document.getElementById('orderId').textContent = orderData.order_id;
+            document.getElementById('customerName').textContent = orderData.full_name;
+            document.getElementById('customerEmail').textContent = orderData.email;
+            document.getElementById('customerPhone').textContent = orderData.phone;
+            document.getElementById('packageType').textContent = orderData.package_type;
+            document.getElementById('totalAmount').textContent = '₹' + orderData.package_price;
+            document.getElementById('payAmount').textContent = orderData.package_price;
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    })
+}

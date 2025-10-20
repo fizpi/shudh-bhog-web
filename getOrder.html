@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Prasad - छठ पूजा प्रसाद बुकिंग</title>
+    <link rel="stylesheet" href="./form-styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="sun-icon"></span>
+                <span>छठ पूजा प्रसाद सेवा</span>
+            </div>
+            <a href="./" class="back-btn">← Back</a>
+        </div>
+    </header>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <div class="form-card">
+            <h2 class="form-title" id="formTitle">Track Your Order</h2>
+            <p class="form-subtitle" id="formSubtitle"> छठ पूजा प्रसाद बुकिंग | Order Details</p>
+
+            <div class="order-details">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="orderNo">Order Number <span class="required">*</span></label>
+                        <input type="text" id="orderNo" name="orderNo" placeholder="Enter your order number">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" required placeholder="Enter your phone number">
+                        <span class="error-message">Please enter your phone number</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkOrderDetails()">
+                        Check Order
+                    </button>
+                </div>
+                <br>
+                <div class="payment-card">
+                        <h2 class="card-title">📋 Order Summary</h2>
+                        
+                        <div class="order-summary">
+                            <div class="summary-row">
+                                <span class="summary-label">Order ID:</span>
+                                <span class="summary-value" id="orderId">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Name:</span>
+                                <span class="summary-value" id="customerName">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Email:</span>
+                                <span class="summary-value" id="customerEmail">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Phone:</span>
+                                <span class="summary-value" id="customerPhone">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Package:</span>
+                                <span class="summary-value" id="packageType">Premium</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Payment Status:</span>
+                                <span class="summary-value" id="paymentStatus">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Transaction ID:</span>
+                                <span class="summary-value" id="transactionId">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Payment Date:</span>
+                                <span class="summary-value" id="paymentDate">--</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Order Status:</span>
+                                <span class="summary-value" id="orderStatus">--</span>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="summary-row">
+                                <span class="summary-label">Address Details :</span>
+                                <span class="summary-value" id="address">--</span>
+                            </div>
+                        </div>
+
+                        <div class="total-row">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">--</span>
+                        </div>
+
+                        <!-- <div class="warning-box">
+                            ⚠️ <strong>Important:</strong> 
+                        </div> -->
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <script src="./scripts.js"></script>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert("Right-click is disabled on this page!");
+        });
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === "F12") e.preventDefault();
+
+            // Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') e.preventDefault();
+
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'j') e.preventDefault();
+
+            // Ctrl+Shift+C (Element Selector)
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'c') e.preventDefault();
+
+            // Ctrl+U (View Page Source)
+            if (e.ctrlKey && e.key.toLowerCase() === 'u') e.preventDefault();
+        });
+
+        const sunIcon = document.querySelector('.sun-icon');
+        if (sunIcon) {
+            sunIcon.style.animation = 'rotate 10s linear infinite, float 3s ease-in-out infinite';
+        }
+        // Package Selection
+        function selectPackage(card, value) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.package-card').forEach(c => {
+                c.classList.remove('selected');
+            });
+
+            // Add selected class to clicked card
+            card.classList.add('selected');
+
+            // Check the radio button
+            card.querySelector('.package-radio').checked = true;
+        }
+
+        // Auto-format phone number
+        document.getElementById('phone').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            e.target.value = value;
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.querySelector('.theme-toggle');
+
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+
+            // Set India as default country
+            document.getElementById('country').value = 'India';
+        });
+    </script>
+</body>
+
+</html>
